@@ -1,0 +1,289 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Julius Sans One', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(45deg, rgba(0, 207, 190, 1) 31%, rgba(1, 117, 154, 1) 80%, rgba(56, 91, 235, 1) 100%);
+    padding: 20px;
+}
+
+.container {
+    width: 440px;
+    height: 956px;
+    background: linear-gradient(45deg, rgba(0, 207, 190, 1) 31%, rgba(1, 117, 154, 1) 80%, rgba(56, 91, 235, 1) 100%);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Close Button */
+.close-button {
+    position: absolute;
+    left: 375px;
+    top: 10px;
+    width: 48px;
+    height: 48px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.close-button img {
+    width: 30px;
+    height: 30px;
+}
+
+/* Profile Picture Section */
+.profile-section {
+    position: absolute;
+    left: 170px;
+    top: 30px;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-outer-circle {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+}
+
+.profile-inner-circle {
+    position: absolute;
+    left: 10px;
+    top: 16px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #D9D9D9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.camera-icon {
+    position: absolute;
+    left: 30px;
+    top: 30px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.camera-icon img {
+    width: 60px;
+    height: 60px;
+}
+
+/* Form Section */
+.registration-form {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Form Groups */
+.form-group {
+    position: absolute;
+    width: 0.9%;
+}
+
+.registration-form > .form-group:nth-of-type(1) {
+    left: 54px;
+    top: 160px;
+}
+
+.registration-form > .form-group:nth-of-type(2) {
+    left: 54px;
+    top: 260px;
+}
+
+.registration-form > .form-group:nth-of-type(3) {
+    left: 54px;
+    top: 360px;
+}
+
+.registration-form > .form-group:nth-of-type(4) {
+    left: 54px;
+    top: 460px;
+}
+
+.registration-form > .form-group:nth-of-type(5) {
+    left: 54px;
+    top: 560px;
+}
+
+.registration-form > .form-group:nth-of-type(6) {
+    left: 54px;
+    top: 660px;
+}
+
+
+
+/* Form Labels */
+.form-label {
+    display: block;
+    font-family: 'Julius Sans One', sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.090999921162923em;
+    color: #000000;
+    text-align: left;
+    margin-bottom: 0;
+    width: 354px;
+    height: 29px;
+}
+
+/* Input Wrapper */
+.input-wrapper {
+    position: relative;
+    width: 318px;
+    /* altura consistente com line-height do input */
+    height: 36px;
+    margin-top: 10px;
+    left: 2px;
+}
+
+/* Form Inputs */
+.form-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-family: 'Julius Sans One', sans-serif;
+    font-weight: 400;
+    font-size: 30px;
+    /* usar line-height igual à altura do wrapper centraliza o texto/placeholder */
+    line-height: 36px;
+    color: #000000;
+    padding: 0;
+    box-sizing: border-box;
+    width: 314px;
+    height: 100%;
+}
+
+.form-input::placeholder {
+    color: #dfdfdf;
+}
+
+/* Django form fields styling */
+.input-wrapper input[type="text"],
+.input-wrapper input[type="email"],
+.input-wrapper input[type="password"] {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-family: 'Julius Sans One', sans-serif;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 36px;
+    color: #000000;
+    padding: 0;
+    box-sizing: border-box;
+    width: 314px;
+    height: 100%;
+}
+
+.input-wrapper input[type="text"]::placeholder,
+.input-wrapper input[type="email"]::placeholder,
+.input-wrapper input[type="password"]::placeholder {
+    color: #dfdfdf;
+}
+
+/* Error messages */
+.error {
+    color: #ff0000;
+    font-size: 12px;
+    margin-top: 5px;
+    display: block;
+}
+
+.error-message {
+    color: #ff0000;
+    font-size: 14px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+
+/* Input Line */
+.input-line {
+    position: absolute;
+    width: 318px;
+    height: 1px;
+    background: #292929;
+    bottom: 0;
+    left: 1px;
+}
+
+
+/* Submit Button */
+.submit-button {
+    position: absolute;
+    left: 51px;
+    top: 830px;
+    width: 338px;
+    height: 86px;
+    background: #D9D9D9;
+    border: 0.5px solid #E9DADA;
+    border-radius: 30px;
+    box-shadow: 0px 4px 3px 0px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Julius Sans One', sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.090999921162923em;
+    color: #000000;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.submit-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 6px 5px 0px rgba(0, 0, 0, 0.3);
+}
+
+.submit-button:active {
+    transform: translateY(0);
+    box-shadow: 0px 4px 3px 0px rgba(0, 0, 0, 0.25);
+}
+
+/* Responsive Design */
+@media (max-width: 800px) {
+    .container {
+        width: 100%;
+        max-width: 440px;
+        height: 956px;
+    }
+}
+
+@media (max-width: 800px) and (max-height: 900px) {
+    .container {
+        height: 100vh;
+        min-height: 956px;
+    }
+}

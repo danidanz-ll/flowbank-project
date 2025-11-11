@@ -1,0 +1,121 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlowBank - Cadastro</title>
+    <link rel="stylesheet" href="{% static 'css/styles_cad.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Close Button (troquei para <a> para navegação válida) -->
+        <a href="{% url 'home' %}" class="close-button" aria-label="Fechar">
+            <img src="{% static 'img/close-icon.svg' %}" alt="Fechar">
+        </a>
+
+        <!-- Profile Picture Area -->
+        <div class="profile-section">
+            <div class="profile-outer-circle"></div>
+            <div class="profile-inner-circle">
+                <div class="camera-icon">
+                    <img src="{% static 'img/camera-icon.svg' %}" alt="Camera">
+                </div>
+            </div>
+        </div>
+
+        <!-- Form Section -->
+        <form class="registration-form" method="post">
+            {% csrf_token %}
+
+            <!-- Nickname -->
+            <div class="form-group">
+                <label for="id_nickname" class="form-label">Como posso te chamar?:</label>
+                <div class="input-wrapper">
+                    {{ form.nickname }}
+                    <div class="input-line"></div>
+                    {% if form.nickname.errors %}
+                        <span class="error">{{ form.nickname.errors }}</span>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Full Name -->
+            <div class="form-group">
+                <label for="id_full_name" class="form-label">Nome Completo:</label>
+                <div class="input-wrapper">
+                    {{ form.full_name }}
+                    <div class="input-line"></div>
+                    {% if form.full_name.errors %}
+                        <span class="error">{{ form.full_name.errors }}</span>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- CPF -->
+            <div class="form-group">
+                <label for="id_cpf_number" class="form-label">Insira seu CPF:</label>
+                <div class="input-wrapper">
+                    {{ form.cpf_number }}
+                    <div class="input-line"></div>
+                    {% if form.cpf_number.errors %}
+                        <span class="error">{{ form.cpf_number.errors }}</span>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <!-- Email -->
+            <div class="form-group">
+                <label for="id_email" class="form-label">Insira seu Email:</label>
+                <div class="input-wrapper">
+                    {{ form.email }}
+                    <div class="input-line"></div>
+                    {% if form.email.errors %}
+                        <span class="error">{{ form.email.errors }}</span>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Password 1 -->
+            <div class="form-group">
+                <label for="id_password1" class="form-label">Insira sua Senha:</label>
+                <div class="input-wrapper">
+                    {{ form.password1 }}
+                    <div class="input-line"></div>
+                    {% if form.password1.errors %}
+                        <span class="error">{{ form.password1.errors }}</span>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Password 2 -->
+            <div class="form-group">
+                <label for="id_password2" class="form-label">Confirme sua senha:</label>
+                <div class="input-wrapper">
+                    {{ form.password2 }}
+                    <div class="input-line"></div>
+                    {% if form.password2.errors %}
+                        <span class="error">{{ form.password2.errors }}</span>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Cadastrar Button -->
+            <button type="submit" class="submit-button">
+                Cadastrar
+            </button>
+
+            <!-- Form non-field errors -->
+            {% if form.non_field_errors %}
+                <div class="error-message">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+        </form>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,234 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Julius Sans One', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(45deg, rgba(0, 207, 190, 1) 31%, rgba(1, 117, 154, 1) 80%, rgba(56, 91, 235, 1) 100%);
+    position: relative;;
+    padding: 20px;
+}
+
+.container {
+    width: 440px;
+    height: 956px;
+    background: linear-gradient(45deg, rgba(0, 207, 190, 1) 31%, rgba(1, 117, 154, 1) 80%, rgba(56, 91, 235, 1) 100%);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Close Button */
+.close-button {
+    position: absolute;
+    left: 375px;
+    top: 10px;
+    width: 48px;
+    height: 48px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.close-button img {
+    width: 30px;
+    height: 30px;
+}
+
+
+/* Welcome Text */
+.welcome-text {
+    position: absolute;
+    left: 67px;
+    top: 120px;
+    width: 305px;
+    height: 25px;
+    font-family: 'Julius Sans One', sans-serif;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 1.0909999847412108em;
+    color: #FFFFFF;
+    text-align: center;
+    text-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    margin: 0;
+}
+
+/* Login Form */
+.login-form {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Form Groups */
+.form-group {
+    position: absolute;
+}
+
+/* CPF Form Group - Label positioned at x:127, y:275 */
+.form-group:nth-child(1) {
+    left: 127px;
+    top: 275px;
+}
+
+/* Password Form Group - Label positioned at x:108, y:457 */
+.form-group:nth-child(2) {
+    left: 108px;
+    top: 457px;
+}
+
+/* Form Labels */
+.form-label {
+    display: block;
+    font-family: 'Julius Sans One', sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.090999921162923em;
+    color: #000000;
+    text-align: left;
+    margin-bottom: 0;
+}
+
+/* CPF Label */
+.form-group:nth-child(1) .form-label {
+    width: 186px;
+    height: 29px;
+}
+
+/* Password Label */
+.form-group:nth-child(2) .form-label {
+    width: 354px;
+    height: 29px;
+}
+
+/* Input Wrapper */
+.input-wrapper {
+    position: absolute;
+    width: 318px;
+}
+
+/* CPF Input Wrapper - Input at x:63, y:344, line at x:61, y:393 */
+.form-group:nth-child(1) .input-wrapper {
+    left: -64px;
+    top: 69px;
+    width: 318px;
+}
+
+/* Password Input Wrapper - Input at x:63, y:526, line at x:61, y:562 */
+.form-group:nth-child(2) .input-wrapper {
+    left: -45px;
+    top: 69px;
+    width: 318px;
+}
+
+/* Form Inputs */
+.form-input {
+    width: 314px;
+    height: 36px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-family: 'Julius Sans One', sans-serif;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 1.0909999847412108em;
+    color: #000000;
+    padding: 0;
+}
+
+.form-input::placeholder {
+    color: #dfdfdf;
+}
+
+/* Input Line */
+.input-line {
+    position: absolute;
+    width: 318px;
+    height: 1px;
+    background: #292929;
+    bottom: 0;
+    left: 1px;
+}
+
+
+/* CPF Input Line - at x:61, y:393, width:318, height:1 */
+/* Input wrapper starts at y:344, line is at y:393, so line is 49px from wrapper top */
+.form-group:nth-child(1) .input-line {
+    width: 318px;
+    height: 1px;
+    top: 49px;
+    left: -2px;
+}
+/* Password Input Line - at x:61, y:562, width:318.01, height:1.2 */
+.form-group:nth-child(2) .input-line {
+    width: 318.01px;
+    height: 1.2px;
+    top: 36px;
+    left: -2px;
+}
+
+/* Login Button */
+.login-button {
+    position: absolute;
+    left: 55px;
+    top: 728px;
+    width: 331px;
+    height: 86px;
+    background: #F4F4F4;
+    border: 0.5px solid #F4F4F4;
+    border-radius: 30px;
+    box-shadow: 0px 4px 3px 0px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.login-button:hover {
+    background-color: #f8f8f8;
+    transform: translateY(-2px);
+    box-shadow: 0px 6px 5px 0px rgba(75, 75, 75, 0.3);
+}
+
+
+.entrar-text {
+    font-family: 'Julius Sans One', sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 0;
+    color: #000000;
+    text-align: center;
+}
+
+.login-button:active {
+    transform: translateY(0);
+    box-shadow: 0px 4px 3px 0px rgba(75, 75, 75, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .container {
+        width: 100%;
+        max-width: 440px;
+        height: 956px;
+    }
+}
+
+@media (max-width: 375px) {
+    .container {
+        height: 100vh;
+        min-height: 956px;
+    }
+}

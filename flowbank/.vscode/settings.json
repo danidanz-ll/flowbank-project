@@ -1,0 +1,8 @@
+{
+    // Caminho sugerido para o interpretador Python dentro da venv local criada em `.venv`.
+    // No Windows PowerShell a virtualenv criada com: python -m venv .venv
+    // o executável fica em: .venv\Scripts\python.exe
+    "python.defaultInterpreterPath": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
+    // Chave de compatibilidade com versões antigas da extensão Python
+    "python.pythonPath": "${workspaceFolder}\\.venv\\Scripts\\python.exe"
+}
