@@ -8,7 +8,7 @@ User = get_user_model()
 class CustomUserCreationForm(UserCreationForm):
     """Form de criação de usuário personalizado.
 
-    Usa `cpf_number` como campo principal de identificação.
+    Usa `email` como campo principal de identificação.
     """
     nickname = forms.CharField(
         required=True, max_length=30, label='Apelido', help_text='Como gostaria de ser chamado?',
@@ -23,7 +23,7 @@ class CustomUserCreationForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ("nickname", "full_name", "email", "cpf_number", "password1", "password2")
+        fields = ("email", "nickname", "full_name", "cpf_number", "password1", "password2")
         widgets = {
             'nickname': forms.TextInput(attrs={'placeholder': 'Naldo'}),
             'full_name': forms.TextInput(attrs={'placeholder': 'Arnaldo Silva'}),
@@ -57,12 +57,12 @@ class CustomUserCreationForm(UserCreationForm):
 
 
 class CustomAuthenticationForm(AuthenticationForm):
-    """Authentication form that shows 'CPF' as the label instead of 'Username'.
+    """Authentication form that shows 'Email' as the label instead of 'Username'.
 
     The underlying AuthenticationForm still posts the value as 'username', which
     Django's authentication backend accepts; the label is changed for clarity.
     """
     username = forms.CharField(
-        label='CPF',
-        widget=forms.TextInput(attrs={'autofocus': True, 'placeholder': '000.000.000-00'})
+        label='Email',
+        widget=forms.EmailInput(attrs={'autofocus': True, 'placeholder': 'seu.email@dominio.com'})
     )

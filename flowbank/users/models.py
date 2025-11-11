@@ -2,15 +2,15 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin,BaseUs
 from django.db import models
 
 class CustomUserManager(BaseUserManager):
-       def create_user(self, cpf_number, email, password, **extra_fields):
-               if not cpf_number:
-                       raise ValueError('O CPF deve ser fornecido')
+       def create_user(self, email, password, cpf_number=None, **extra_fields):
+               if not email:
+                       raise ValueError('O email deve ser fornecido')
                email = self.normalize_email(email)
-               user = self.model(cpf_number=cpf_number, email=email, **extra_fields)
+               user = self.model(email=email, cpf_number=cpf_number, **extra_fields)
                user.set_password(password)
                user.save()
                return user
-       def create_superuser(self, cpf_number, email, password, **extra_fields):
+       def create_superuser(self, email, password, cpf_number=None, **extra_fields):
                 extra_fields.setdefault('is_staff', True)
                 extra_fields.setdefault('is_superuser', True)
     
@@ -19,22 +19,21 @@ class CustomUserManager(BaseUserManager):
                 if extra_fields.get('is_superuser') is not True:
                           raise ValueError('Superuser must have is_superuser=True.')
     
-                user = self.create_user(cpf_number, email, password, **extra_fields)
+                user = self.create_user(email, password, **extra_fields)
                 return user
         
 class CustomUser(AbstractBaseUser,PermissionsMixin):
         email = models.EmailField(unique=True)
-        nickname = models.CharField(max_length=150)
-        full_name = models.CharField(max_length=100)
-        cpf_number = models.CharField(max_length=14, unique=True)
+        nickname = models.CharField(max_length=150, blank=True)
+        full_name = models.CharField(max_length=100, blank=True)
+        cpf_number = models.CharField(max_length=14, unique=True, null=True, blank=True)
         is_staff = models.BooleanField(default=False)
         is_active = models.BooleanField(default=True)
 
-        # Make cpf_number the field used for authentication
-        USERNAME_FIELD = 'cpf_number'
-        # When creating a superuser via `createsuperuser`, Django will prompt for these
-        REQUIRED_FIELDS = ['email']
-
+        # Make email the field used for authentication
+        USERNAME_FIELD = 'email'
+        # Empty REQUIRED_FIELDS means only email and password are prompted for superuser creation
+        REQUIRED_FIELDS = []
         objects = CustomUserManager()
 
 
