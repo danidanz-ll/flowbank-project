@@ -14,10 +14,10 @@
     <div class="container">
         <!-- Main Image Rectangle -->
         <div class="image-rectangle">
-            <img src="media/login-image.png" alt="FlowBank">
+            <img src="{% static 'img/login-image.png' %}" alt="FlowBank">
         </div>
         
-        <!-- Login Button (agora é um link para a view de login) -->
+        <!-- Login Button -->
         <a href="{% url 'users:login' %}" class="login-button">
             <span class="entrar-text">Login</span>
         </a>

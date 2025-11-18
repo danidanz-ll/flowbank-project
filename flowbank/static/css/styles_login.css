@@ -66,26 +66,22 @@ body {
 
 /* Login Form */
 .login-form {
-    position: relative;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 100%;
-    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px; /* espaço entre CPF e Senha */
 }
 
 /* Form Groups */
 .form-group {
-    position: absolute;
-}
-
-/* CPF Form Group - Label positioned at x:127, y:275 */
-.form-group:nth-child(1) {
-    left: 127px;
-    top: 275px;
-}
-
-/* Password Form Group - Label positioned at x:108, y:457 */
-.form-group:nth-child(2) {
-    left: 108px;
-    top: 457px;
+    position: relative;
+    left: 0;
+    top: 0;
 }
 
 /* Form Labels */
@@ -100,37 +96,12 @@ body {
     margin-bottom: 0;
 }
 
-/* CPF Label */
-.form-group:nth-child(1) .form-label {
-    width: 186px;
-    height: 29px;
-}
-
-/* Password Label */
-.form-group:nth-child(2) .form-label {
-    width: 354px;
-    height: 29px;
-}
-
 /* Input Wrapper */
 .input-wrapper {
-    position: absolute;
+    position: relative;
     width: 318px;
 }
 
-/* CPF Input Wrapper - Input at x:63, y:344, line at x:61, y:393 */
-.form-group:nth-child(1) .input-wrapper {
-    left: -64px;
-    top: 69px;
-    width: 318px;
-}
-
-/* Password Input Wrapper - Input at x:63, y:526, line at x:61, y:562 */
-.form-group:nth-child(2) .input-wrapper {
-    left: -45px;
-    top: 69px;
-    width: 318px;
-}
 
 /* Form Inputs */
 .form-input {
@@ -143,7 +114,7 @@ body {
     font-weight: 400;
     font-size: 30px;
     line-height: 1.0909999847412108em;
-    color: #000000;
+    color: #dfdfdf;
     padding: 0;
 }
 
@@ -158,33 +129,15 @@ body {
     height: 1px;
     background: #292929;
     bottom: 0;
-    left: 1px;
+    left: 0;
 }
 
-
-/* CPF Input Line - at x:61, y:393, width:318, height:1 */
-/* Input wrapper starts at y:344, line is at y:393, so line is 49px from wrapper top */
-.form-group:nth-child(1) .input-line {
-    width: 318px;
-    height: 1px;
-    top: 49px;
-    left: -2px;
-}
-/* Password Input Line - at x:61, y:562, width:318.01, height:1.2 */
-.form-group:nth-child(2) .input-line {
-    width: 318.01px;
-    height: 1.2px;
-    top: 36px;
-    left: -2px;
-}
 
 /* Login Button */
 .login-button {
-    position: absolute;
-    left: 55px;
-    top: 728px;
+    position: relative;
     width: 331px;
-    height: 86px;
+    height: 60px;
     background: #F4F4F4;
     border: 0.5px solid #F4F4F4;
     border-radius: 30px;
@@ -202,7 +155,6 @@ body {
     box-shadow: 0px 6px 5px 0px rgba(75, 75, 75, 0.3);
 }
 
-
 .entrar-text {
     font-family: 'Julius Sans One', sans-serif;
     font-weight: 400;
@@ -215,6 +167,35 @@ body {
 .login-button:active {
     transform: translateY(0);
     box-shadow: 0px 4px 3px 0px rgba(75, 75, 75, 0.3);
+}
+
+/* ===== Mensagens de Erro ===== */
+.error-message {
+    position: relative;
+    width: 100%;
+    max-width: 350px;
+    margin: 20px auto 0 auto;
+    background: rgba(255, 0, 0, 0.1);
+    border: 1px solid rgba(255, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 10px 15px;
+    text-align: center;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.error-message p {
+    color: #b30000;
+    font-family: 'Julius Sans One', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0;
+    line-height: 1.4em;
+}
+
+/* Ajuste para centralizar no layout do formulário */
+.login-form .error-message {
+    display: block;
+    align-self: center;
 }
 
 /* Responsive Design */

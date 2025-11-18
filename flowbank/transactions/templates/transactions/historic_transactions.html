@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórico - FlowBank</title>
+    <link rel="stylesheet" href="{% static 'css/styles_transactions.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Noto+Sans+Devanagari:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main-frame">
+        <!-- Header -->
+
+        <div class="header">
+            <a href="{% url 'accounts:home' %}">
+                <img src="{% static 'img/return_button.png' %}" alt="Menu" class="menu-icon">
+            </a>
+            
+            <h1 class="title">Histórico</h1>
+        </div>
+
+        <!-- Main Content Container -->
+        <div class="content-container">
+            <div class="monthly-usage-card">
+                <span class="usage-label">Gastos do Mês</span>
+
+                <span class="usage-amount">R$ {{ monthly_expenses|floatformat:2 }}</span>
+
+                <hr class="divider-line">
+            </div>
+
+            <!-- Search Bar -->
+            <div class="search-container">
+                <img src="{% static 'img/search_button.png' %}" alt="Search" class="search-icon">
+                <input type="text" class="search-input" placeholder="Buscar">
+            </div>
+
+            <!-- Transaction List -->
+            <div class="transactions-list">
+                {% for transaction in user_transactions %}
+                
+                    <div class="transaction-item">
+
+                        <!-- Ícone -->
+                        <div class="transaction-icon">
+                            {% if transaction.transaction_type == "DEPOSITO" %}
+                                <img src="{% static 'img/transference.svg' %}" alt="Depósito">
+                            {% else %}
+                                <img src="{% static 'img/transference.svg' %}" alt="Retirada">
+                            {% endif %}
+                        </div>
+
+                        <!-- Informações -->
+                        <div class="transaction-info">
+                            <span class="transaction-name">
+                                {% if transaction.from_user == account %}
+                                    <span class="label">Enviado para:</span>
+                                    <span class="value">{{ transaction.user_to.owner.full_name }}</span>
+                                {% else %}
+                                    <span class="label">Recebido de:</span>
+                                    <span class="value">{{ transaction.user_to.owner.full_name }}</span>
+                                {% endif %}
+                            </span>
+
+                            <span class="transaction-time">
+                                {{ transaction.date|date:"d/m/Y H:i" }}
+                            </span>
+
+                        </div>
+
+                        <!-- Valor -->
+                        <div class="transaction-amount"
+                            style="color: {% if transaction.from_user == account %}#ff4d4d{% else %}#4CAF50{% endif %};">
+                            {% if transaction.from_user == account %}-{% else %}+{% endif %}
+                            R$ {{ transaction.amount }}
+                        </div>
+
+                    </div>
+
+                {% empty %}
+                    <p class="no-transactions">Nenhuma transação encontrada.</p>
+                {% endfor %}
+            </div>
+
+        </div>
+        <!-- Bottom Navigation -->
+         
+        <div class="bottom-nav">
+            <a href="{% url 'accounts:home' %}">
+                <img src="{% static 'img/home_button.svg' %}" alt="Home" class="nav-icon">
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
+

@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-&&*v%lr2_=^sy2h7%w66m^$21*tjuqf8!*&ydypl&a-e=zgf%$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users',
+    'accounts',
+    'transactions',
 ]
 
 MIDDLEWARE = [
@@ -103,12 +105,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br'
 
-TIME_ZONE = 'UTC'
-
-USE_I18N = True
-
+TIME_ZONE = 'America/Sao_Paulo'
 USE_TZ = True
 
 
@@ -132,3 +131,9 @@ AUTH_USER_MODEL = 'users.CustomUser'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTHENTICATION_BACKENDS = [
+    'users.backends.CPFBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
+

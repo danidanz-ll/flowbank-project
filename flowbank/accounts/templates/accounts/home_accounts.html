@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlowBank - Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/styles_users_home.css' %}">
+</head>
+<body>
+
+  <main class="home-screen">
+    
+    <!-- TOPO: Perfil -->
+    <header class="profile-area">
+      <div class="profile-avatar">
+        <div class="avatar-circle">
+          <img src="{% static 'img/person.svg' %}" alt="Avatar do usuário">
+        </div>
+      </div>
+      <span class="profile-name">{{ nickname }}</span>
+
+      <!-- Botão de menu -->
+      <div class="menu-container">
+        <button id="menu-toggle" class="menu-button" aria-label="Abrir menu">
+          <img src="{% static 'img/menu.svg' %}" alt="Menu">
+        </button>
+
+        <!-- Submenu -->
+        <div id="submenu" class="submenu">
+          <a href="{% url 'users:logout' %}">Logout</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="balance-card">
+
+      <!-- Bloco do saldo -->
+    <div class="balance-container">
+        <div class="balance-left">
+            <div class="balance-label">SALDO</div>
+            <div id="balance-value" class="balance-value">
+                  R$ {{ balance|floatformat:2 }}
+            </div>
+        </div>
+        <button id="toggle-visibility" class="visibility-toggle" type="button" aria-label="Alternar visibilidade do saldo">
+            <img id="eye-icon" src="{% static 'img/eye.svg' %}" alt="Mostrar saldo">
+        </button>
+    </div>
+    <span class="balance-divider"></span>
+
+      <!-- Grade de funcionalidades -->
+      <ul class="feature-grid">
+        <li class="feature-card"><div class="feature-card__inner"><img src="{% static 'img/pix_icon.png' %}" alt="Pix"></div></li>
+        <li class="feature-card"><div class="feature-card__inner"><img src="{% static 'img/investments_icon.png' %}" alt="Investimentos"></div></li>
+        <li class="feature-card">
+            <a href="{% url 'transactions:historic_transactions' %}">
+                <div class="feature-card__inner">
+                    <img src="{% static 'img/reports_icon.png' %}" alt="Histórico">
+                </div>
+            </a>
+        </li>
+        <li class="feature-card"><div class="feature-card__inner"><img src="{% static 'img/ai_assistant_icon.png' %}" alt="Assistente AI"></div></li>
+      </ul>
+    </section>
+
+  </main>
+
+  <script>
+    const balanceValue = document.getElementById("balance-value");
+    const toggleBtn = document.getElementById("toggle-visibility");
+    const eyeIcon = document.getElementById("eye-icon");
+
+    let isVisible = true;
+    const realValue = balanceValue.textContent;
+    const hiddenValue = "R$ •••••";
+
+    toggleBtn.addEventListener("click", () => {
+      // Inicia fade-out
+      balanceValue.classList.add("balance-hidden");
+
+      // Espera o fade-out terminar antes de trocar o texto
+      setTimeout(() => {
+        if (isVisible) {
+          balanceValue.textContent = hiddenValue;
+          eyeIcon.src = "{% static 'img/eye.svg' %}";
+        } else {
+          balanceValue.textContent = realValue;
+          eyeIcon.src = "{% static 'img/eye.svg' %}";
+        }
+
+        // Mostra de novo com fade-in
+        balanceValue.classList.remove("balance-hidden");
+        isVisible = !isVisible;
+      }, 300); // tempo igual ao transition do CSS
+    });
+  </script>
+  <script>
+    const menuBtn = document.getElementById("menu-toggle");
+    const submenu = document.getElementById("submenu");
+
+    menuBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      submenu.style.display = submenu.style.display === "flex" ? "none" : "flex";
+    });
+
+    // Fechar o menu ao clicar fora
+    document.addEventListener("click", (e) => {
+      if (!submenu.contains(e.target) && e.target !== menuBtn) {
+        submenu.style.display = "none";
+      }
+    });
+  </script>
+
+
+</body>
+</html>

@@ -25,8 +25,9 @@ from django.views.static import serve
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.homepage, name='home'),
-    path('about/', views.about_page, name='about'),
-    path('users/', include('users.urls'))
+    path('users/', include('users.urls')),
+    path('accounts/', include('accounts.urls')),
+    path('transactions/', include('transactions.urls'))
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
